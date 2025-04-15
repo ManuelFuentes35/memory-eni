@@ -125,4 +125,14 @@ body {
         justify-content: space-evenly;
     }
 
+      #saisieNom{
+        display: flex;
+        flex-direction:row; 
+      }
+
+      #validationNom{
+        width: 5%;
+        padding-left: 2%;
+      }
+
     /* https://developer.mozilla.org/fr/docs/Learn_web_development/Extensions/Forms/Advanced_form_styling */

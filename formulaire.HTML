@@ -29,6 +29,7 @@
             <h2>Inscrivez-vous</h2>
 
             <label for="nom">Nom d'utilisateur*</label>
+            <div id="saisieNom">
             <input
               type="text"
               id="nom"
@@ -39,7 +40,11 @@
               pattern=".{3,}"
               title="Saisissez votre nom (3 caractères minimum.)"
             />
-            <!-- <small>3 caractères minimum</small> -->
+            <img src="ressources/valid_error.svg" alt="incorrect" id="validationNom" hidden>
+          </div>
+
+            <small id="alerteNom" hidden>Choississez un peudo contenant au moins 3 caractères</small>
+            
 
             <label for="mail">Entrez votre E-mail*</label>
             <input
