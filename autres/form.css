@@ -1,0 +1,85 @@
+/* Applique un dégradé doux en fond de la page */
+body {
+    background: linear-gradient(to bottom right, #b0e0a8, #a1bce1);
+    font-family: 'Segoe UI', sans-serif; /* Police plus moderne */
+  }
+  
+  /* Conteneur du formulaire */
+  .form-container {
+    background-color: #1c1c1c; /* Fond sombre */
+    color: #f5f5f5;            /* Texte clair */
+    max-width: 400px;          /* Largeur maximale */
+    margin: 50px auto;         /* Centré verticalement avec marge */
+    padding: 30px;             /* Espace intérieur */
+    border-radius: 10px;       /* Coins arrondis */
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Ombre douce autour */
+  }
+  
+  /* Titre du formulaire */
+  .form-container h2 {
+    text-align: center;       /* Centré */
+    font-size: 1.5em;         /* Taille plus grande */
+    margin-bottom: 20px;      /* Espace en dessous */
+  }
+  
+  /* Chaque groupe (label + input) */
+  .form-group {
+    margin-bottom: 20px;      /* Espace entre chaque champ */
+  }
+  
+  /* Style du label (le texte au-dessus de l’input) */
+  label {
+    display: block;           /* Affiché sur sa propre ligne */
+    font-weight: 500;         /* Texte légèrement en gras */
+    margin-bottom: 5px;       /* Petit espace avec l’input */
+  }
+  
+  /* Style du texte explicatif en dessous du champ */
+  .form-group small {
+    color: #ccc;              /* Texte gris clair */
+    font-size: 0.8em;         /* Plus petit */
+    margin-top: 4px;          /* Petit espace au-dessus */
+    display: block;           /* Sur sa propre ligne */
+  }
+  
+  /* Champ de saisie */
+  input {
+    background-color: transparent; /* Fond transparent (hérite du fond noir) */
+    border: none;                  /* Pas de bordure classique */
+    border-bottom: 2px solid #ccc;/* Ligne en bas du champ */
+    padding: 10px;                 /* Espace intérieur */
+    width: 100%;                   /* Prend toute la largeur disponible */
+    color: #f5f5f5;                /* Texte clair */
+    font-size: 1em;                /* Taille standard */
+  }
+  
+  /* Quand l'utilisateur clique dans le champ */
+  input:focus {
+    outline: none;                /* Supprime le contour bleu par défaut */
+    border-color: #f1c40f;        /* Change la couleur de la ligne du bas (jaune) */
+  }
+  
+  /* Conteneur des boutons */
+  .buttons {
+    display: flex;                /* Aligne les boutons en ligne */
+    justify-content: space-between; /* Espace égal entre eux */
+    margin-top: 30px;             /* Espace au-dessus */
+  }
+  
+  /* Boutons personnalisés */
+  .buttons button {
+    background-color: #fdf6d3;    /* Fond beige clair */
+    color: #1c1c1c;               /* Texte noir */
+    border: none;                 /* Pas de bordure */
+    padding: 10px 20px;           /* Espacement autour du texte */
+    border-radius: 6px;           /* Coins arrondis */
+    cursor: pointer;              /* Curseur main au survol */
+    font-weight: bold;            /* Texte en gras */
+    transition: 0.3s;             /* Animation fluide au survol */
+  }
+  
+  /* Effet au survol */
+  .buttons button:hover {
+    background-color: #f1c40f;    /* Jaune clair */
+  }
+  

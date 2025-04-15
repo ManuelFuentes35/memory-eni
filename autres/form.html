@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <section class="sectionForm">
+    <form action="miseEnForm" method="post">
+      <fieldset class="affichageForm">
+        <legend>Inscrivez-vous</legend>
+  
+        <label for="nom">Nom d'utilisateur*</label>
+        <input type="text" id="nom" name="nom" autofocus required
+               placeholder="Votre nom"
+               pattern=".{3,}" title="Saisissez votre nom (3 caractères minimum.)">
+        <small>3 caractères minimum</small>
+  
+        <label for="mail">Entrez votre E-mail*</label>
+        <input type="text" id="mail" name="mail" required
+               placeholder="E-mail"
+               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+               title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr">
+  
+        <label for="motDePasse">Mot de passe*</label>
+        <input type="password" id="motDePasse" name="motDePasse"
+               placeholder="Votre mot de passe"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
+               title="Minimum un symbole, un chiffre, une majuscule et 6 caractères.">
+        <small>Au moins un symbole, un chiffre, une majuscule, 6 caractères minimum.</small>
+  
+        <label for="verificationMotDePasse">Confirmation*</label>
+        <input type="password" id="verificationMotDePasse" name="verificationMotDePasse"
+               placeholder="Confirmez le mot de passe"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
+               title="Confirmez le mot de passe.">
+  
+        <div class="buttons">
+          <button type="submit">Création du compte</button>
+          <button type="reset">Annuler</button>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+
+  
+  
+    <!-- Conteneur principal du formulaire -->
+<div class="form-container">
+  
+    <!-- Titre du formulaire -->
+    <h2>Inscrivez-vous.</h2>
+  
+    <!-- Champ Nom d'utilisateur -->
+    <div class="form-group">
+      <!-- Étiquette du champ -->
+      <label for="username">Nom d'utilisateur</label>
+      <!-- Champ de saisie -->
+      <input type="text" id="username" placeholder="Votre nom">
+      <!-- Texte d’aide (sous le champ) -->
+      <small>3 caractères minimum</small>
+    </div>
+  
+    <!-- Champ Email -->
+    <div class="form-group">
+      <label for="email">Entrez votre email</label>
+      <input type="email" id="email" placeholder="Votre email">
+    </div>
+  
+    <!-- Champ Mot de passe -->
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" placeholder="Votre mot de passe">
+      <small>Au moins un symbole, un chiffre, ainsi que 6 caractères minimum.</small>
+    </div>
+  
+    <!-- Champ Confirmation du mot de passe -->
+    <div class="form-group">
+      <label for="confirm">Confirmez le mot de passe</label>
+      <input type="password" id="confirm" placeholder="Confirmez le mot de passe">
+    </div>
+  
+    <!-- Zone des boutons -->
+    <div class="buttons">
+      <button type="submit">Création du compte</button>
+      <button type="button">Annuler</button>
+    </div>
+  </div>
+  
+</body>
+</html>
