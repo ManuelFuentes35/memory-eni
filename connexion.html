@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>connexion_Memory</title>
     <script defer src="scriptconnexion.js"></script>
     <link rel="stylesheet" href="styleconnexion.css" />
+  </head>
+  <body>
+    <header>
+      <h1 id="titreDePage">ENI - <strong>MEMORY</strong> - Acceuil</h1>
+    </header>
 
-</head>
-<body>
-    
-</body>
+    <nav id="cadreMenu">
+      <ul class="menu">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="formulaire.html">s'inscrire</a></li>
+        <li><a href="connexion.html">se connecter</a></li>
+        <li><a href="profil.html">profil</a></li>
+        <li><a href="jouer.html">jouer</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="sectionForm">
+        <form action="miseEnForm" method="post">
+          <fieldset class="affichageForm">
+            <h2>Connectez-vous</h2>
+
+            <label for="mail">Entrez votre E-mail*</label>
+            <input
+              type="text"
+              id="mail"
+              name="mail"
+              required
+              placeholder="E-mail"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr"
+            />
+
+            <label for="motDePasse">Mot de passe*</label>
+            <input
+              type="password"
+              id="motDePasse"
+              name="motDePasse"
+              placeholder="Votre mot de passe"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
+              title="Minimum un symbole, un chiffre et 6 caractères"
+            />
+
+            <div class="clic">
+              <input type="submit" value="Se connecter" />
+              <input type="reset" value="Annuler" />
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>

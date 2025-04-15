@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>inscription_memory</title>
+    <title>inscription_Memory</title>
     <script defer src="scriptformulaire.js"></script>
     <link rel="stylesheet" href="styleformulaire.css" />
   </head>
@@ -16,60 +16,78 @@
       <ul class="menu">
         <li><a href="index.html">Accueil</a></li>
         <li><a href="formulaire.html">s'inscrire</a></li>
-        <li><a>se connecter</a></li>
-        <li><a>profil</a></li>
-        <li><a>jouer</a></li>
+        <li><a href="connexion.html">se connecter</a></li>
+        <li><a href="profil.html">profil</a></li>
+        <li><a href="jouer.html">jouer</a></li>
       </ul>
     </nav>
 
     <main>
-        <section class="sectionForm">
-            <form action="miseEnForm" method="post">
-            <fieldset class="affichageForm">
-                            
-                <h2>Inscrivez-vous</h2>
-                
-                <label for="nom">Nom d'utilisateur*</label>
-                <input type="text" id="nom" name="nom" autofocus required 
-                placeholder="3 caractères minimum"
-                pattern=".{3,}" title="Saisissez votre nom (3 caractères minimum.)">
-                <!-- <small>3 caractères minimum</small> -->
+      <section class="sectionForm">
+        <form action="miseEnForm" method="post">
+          <fieldset class="affichageForm">
+            <h2>Inscrivez-vous</h2>
 
-                <label for="mail">Entrez votre E-mail*</label>
-                <input type="text" id="mail" name="mail" required
-                placeholder="E-mail"
-                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr">
-                <!-- explication du pattern
+            <label for="nom">Nom d'utilisateur*</label>
+            <input
+              type="text"
+              id="nom"
+              name="nom"
+              autofocus
+              required
+              placeholder="3 caractères minimum"
+              pattern=".{3,}"
+              title="Saisissez votre nom (3 caractères minimum.)"
+            />
+            <!-- <small>3 caractères minimum</small> -->
+
+            <label for="mail">Entrez votre E-mail*</label>
+            <input
+              type="text"
+              id="mail"
+              name="mail"
+              required
+              placeholder="E-mail"
+              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr"
+            />
+            <!-- explication du pattern
                     ^[a-zA-Z0-9._%+-]+ → au début : lettres/chiffres/symboles autorisés avant le @
                     @ → obligatoire
                     [a-zA-Z0-9.-]+ → nom de domaine
                     \. → point avant le domaine de niveau supérieur
                     [a-zA-Z]{2,}$ → domaine de niveau supérieur (comme .fr, .com, etc.) -->
 
-                <label for="motDePasse">Mot de passe*</label>
-                    <input type="password" id="motDePasse" name="motDePasse"
-                    placeholder="Votre mot de passe"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}" 
-                    title="Minimum un symbole, un chiffre et 6 caractères">
-                    <!-- <small>Au moins un symbole, un chiffre, une majuscule, 6 caractères minimum.</small> -->
+            <label for="motDePasse">Mot de passe*</label>
+            <input
+              type="password"
+              id="motDePasse"
+              name="motDePasse"
+              placeholder="Votre mot de passe"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
+              title="Minimum un symbole, un chiffre et 6 caractères"
+            />
+            <!-- <small>Au moins un symbole, un chiffre, une majuscule, 6 caractères minimum.</small> -->
 
-                    <label for="verificationMotDePasse">Confirmation mot de passe*</label>
-                    <input type="password" id="verificationMotDePasse" name="verificationMotDePasse"
-                    placeholder="Confirmez mot de passe"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}" 
-                    title="Confirmez le mot de passe">
+            <label for="verificationMotDePasse"
+              >Confirmation mot de passe*</label
+            >
+            <input
+              type="password"
+              id="verificationMotDePasse"
+              name="verificationMotDePasse"
+              placeholder="Confirmez mot de passe"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
+              title="Confirmez le mot de passe"
+            />
 
-                    <div class="clic">
-                        <input type="submit" value="Création du compte">
-                        <input type="reset" value="annuler">
-                    </div>
-
-               
-            </fieldset>
+            <div class="clic">
+              <input type="submit" value="Création du compte" />
+              <input type="reset" value="Annuler" />
+            </div>
+          </fieldset>
         </form>
-        </section>
-        
+      </section>
     </main>
   </body>
 </html>
