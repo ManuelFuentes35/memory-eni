@@ -3,6 +3,7 @@
 let imageNom = document.getElementById("validationNom");
 let textNom = document.getElementById("alerteNom");
 let nom = document.getElementById("nom");
+console.log(nom);
 
 //changer d'image à la saisie et couleur texte
 nom.addEventListener("input", function () {
@@ -144,7 +145,7 @@ function testTout() {
     faible.setAttribute("hidden", true);
     moyen.setAttribute("hidden", true);
   }
-  accesbouton()
+  accesbouton();
 }
 
 //comparaison des 2 mots de passe
@@ -166,7 +167,7 @@ function verifieMDP() {
     imageVerifMDP.src = "ressources/valid_error.svg";
     imageVerifMDP.alt = "incorrect";
   }
-  accesbouton()
+  accesbouton();
 }
 
 let submit = document.getElementById("submit");
@@ -185,5 +186,9 @@ function accesbouton() {
 }
 
 //stockage des données en local:
-
-
+submit.addEventListener("click", function (event) {
+  event.preventDefault();
+  localStorage.setItem("pseudo", nom.value);
+  localStorage.setItem("mail", mail.value);
+  localStorage.setItem("password", mdp.value);
+});
