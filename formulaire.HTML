@@ -23,71 +23,126 @@
     </nav>
 
     <main>
-      <section class="sectionForm">
+      <section class="sectionForm" id="saisieNom">
         <form action="miseEnForm" method="post">
           <fieldset class="affichageForm">
             <h2>Inscrivez-vous</h2>
 
             <label for="nom">Nom d'utilisateur*</label>
-            <div id="saisieNom">
-            <input
-              type="text"
-              id="nom"
-              name="nom"
-              autofocus
-              required
-              placeholder="3 caractères minimum"
-              pattern=".{3,}"
-              title="Saisissez votre nom (3 caractères minimum.)"
-            />
-            <img src="ressources/valid_error.svg" alt="incorrect" id="validationNom" hidden>
-          </div>
+            <div class="alignImage">
+              <input
+                type="text"
+                id="nom"
+                name="nom"
+                autofocus
+                required
+                placeholder="3 caractères minimum"
+                pattern=".{3,}"
+                title="Saisissez votre nom (3 caractères minimum.)"
+              />
+              <img
+                src="ressources/valid_error.svg"
+                alt="incorrect"
+                class="imageValidation"
+                id="validationNom"
+                hidden
+              />
+            </div>
 
-            <small id="alerteNom" hidden>Choississez un peudo contenant au moins 3 caractères</small>
-            
+            <small id="alerteNom" hidden
+              >Choississez un peudo contenant au moins 3 caractères</small
+            >
 
             <label for="mail">Entrez votre E-mail*</label>
-            <input
-              type="text"
-              id="mail"
-              name="mail"
-              required
-              placeholder="E-mail"
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr"
-            />
-            <!-- explication du pattern
+            <div class="alignImage" id="saisieMail">
+              <input
+                type="text"
+                id="mail"
+                name="mail"
+                required
+                placeholder="E-mail"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr"
+              />
+              <!-- explication du pattern
                     ^[a-zA-Z0-9._%+-]+ → au début : lettres/chiffres/symboles autorisés avant le @
                     @ → obligatoire
                     [a-zA-Z0-9.-]+ → nom de domaine
                     \. → point avant le domaine de niveau supérieur
                     [a-zA-Z]{2,}$ → domaine de niveau supérieur (comme .fr, .com, etc.) -->
+              <img
+                src="ressources/valid_error.svg"
+                alt="incorrect"
+                class="imageValidation"
+                id="validationMail"
+                hidden
+              />
+            </div>
+            <small id="alerteMail" hidden>Rentrez un mail valide</small>
 
             <label for="motDePasse">Mot de passe*</label>
-            <input
-              type="password"
-              id="motDePasse"
-              name="motDePasse"
-              placeholder="Votre mot de passe"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
-              title="Minimum un symbole, un chiffre et 6 caractères"
-            />
-            <!-- <small>Au moins un symbole, un chiffre, une majuscule, 6 caractères minimum.</small> -->
+            <div class="alignImage" id="saisieMDP">
+              <input
+                type="password"
+                id="motDePasse"
+                name="motDePasse"
+                placeholder="Votre mot de passe"
+                pattern="(?=.*\d)(?=.*[@$!%*?&]).{6,}"
+                title="Minimum un symbole, un chiffre et 6 caractères"
+              />
+              <img
+                src="ressources/valid_error.svg"
+                alt="incorrect"
+                class="imageValidation"
+                id="validationMDP"
+                hidden
+              />
+            </div>
+            <small
+              >Au moins un symbole, un chiffre, une majuscule, 6 caractères
+              minimum.</small
+            >
+
+            <div id="segmentpuissance">
+              <div class="segment" id="seg1"></div>
+              <div class="segment" id="seg2"></div>
+              <div class="segment" id="seg3"></div>
+            </div>
+
+            <div id="puissance">
+              <small hidden id="faible">faible</small>
+              <small hidden id="moyen">moyen</small>
+              <small hidden id="fort">fort</small>
+            </div>
 
             <label for="verificationMotDePasse"
               >Confirmation mot de passe*</label
             >
-            <input
-              type="password"
-              id="verificationMotDePasse"
-              name="verificationMotDePasse"
-              placeholder="Confirmez mot de passe"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{6,}"
-              title="Confirmez le mot de passe"
-            />
+            <div class="alignImage" id="confirmMDP">
+              <input
+                type="password"
+                id="verificationMotDePasse"
+                name="verificationMotDePasse"
+                placeholder="Confirmez mot de passe"
+                pattern="(?=.*\d)(?=.*[@$!%*?&]).{6,}"
+                title="Confirmez le mot de passe"
+              />
+              <img
+                src="ressources/valid_error.svg"
+                alt="incorrect"
+                class="imageValidation"
+                id="validationconfirmMDP"
+                hidden
+              />
+            </div>
 
             <div class="clic">
-              <input type="submit" value="Création du compte" />
+              <input
+                type="submit"
+                value="Création du compte"
+                id="submit"
+                disabled
+              />
               <input type="reset" value="Annuler" />
             </div>
           </fieldset>
