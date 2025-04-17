@@ -19,7 +19,7 @@ if (user) {
 
 let choixMemory = document.getElementById("listeMemory");
 choixMemory.addEventListener("click", stockage);
-
+localStorage.setItem("choixMemory",JSON.stringify("legume"));
 function stockage() {
   localStorage.setItem("choixMemory", JSON.stringify(choixMemory.value));
 }
@@ -61,6 +61,7 @@ imageMemory.addEventListener("click", function () {
 
 let choixTaille = document.getElementById("listeTaille");
 choixTaille.addEventListener("click", stockageTaille);
+localStorage.setItem("choixTaille",JSON.stringify("4*3"));
 
 function stockageTaille() {
   localStorage.setItem("choixTaille", JSON.stringify(choixTaille.value));

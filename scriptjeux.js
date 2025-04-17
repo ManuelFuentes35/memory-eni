@@ -71,7 +71,7 @@ for (let i = 1; i <= 6; i++) {
 }
 
 //création tableau des différentes listes et association des listes au nom des choix
-const associListeEtMemory = {
+const associeListeEtMemory = {
   scrabble: listeScrabble,
   animaux: listeAnimaux,
   animauxAnimes: listeAnimauxAnimes,
@@ -82,59 +82,104 @@ const associListeEtMemory = {
   legume: listeLegume,
 };
 
-
 //récupération des choix stocker + recherche dans la liste
 const choixMemory = JSON.parse(localStorage.getItem("choixMemory"));
 const choixTaille = JSON.parse(localStorage.getItem("choixTaille"));
-let listeChoisie = associListeEtMemory[choixMemory];
+let listeChoisie = associeListeEtMemory[choixMemory];
 
-let quantite = eval(choixTaille)/2;
+const [colonnes,lignes]=choixTaille.split("*").map(Number);
+
+let quantite = (colonnes * lignes) / 2;
 
 console.log("choixMemory:", choixMemory);
 console.log(listeChoisie);
 console.log(choixTaille);
-console.log(quantite)
+console.log(quantite);
+
+//selection aléatoire des cartes du jeux
+const copieListe = [...listeChoisie];
+const selection = [];
+
+function choixImageAleatoire() {
+  for (let i = 0; i < quantite; i++) {
+    if (copieListe.length === 0) {
+      break;
+    }
+    const choixIndexImage = Math.floor(Math.random() * copieListe.length);
+    const imageCopie = copieListe.splice(choixIndexImage, 1)[0];
+    selection.push(imageCopie);
+  }
+  return selection;
+}
+
+choixImageAleatoire();
+
+console.log("Sélection aléatoire :", selection);
+
+//création des paires de cartes
+let doublons = [];
+function doubleSelection() {
+  doublons.push(...selection);
+  doublons.push(...selection);
+  return doublons;
+}
+
+doubleSelection();
+
+console.log("sélection final ;", doublons);
+
+//mélange des cartes pour le jeux
+function melangeur(doublons) {
+  for (let i = doublons.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [doublons[i], doublons[j]] = [doublons[j], doublons[i]];
+  }
+  return doublons;
+}
+
+const cartesMelangees = melangeur(doublons);
+
+console.log("cartes mélangées :", cartesMelangees);
 
 
+///////////////////////////////////////////////////////////////////
 
+// Sélectionner l'élément qui va contenir les cartes
 const pisteJeux = document.getElementById("pisteJeux");
 
+//tailles de grille pour les cartes
+pisteJeux.style.gridTemplateColumns = `repeat(${colonnes}, 1fr)`;
+pisteJeux.style.gridTemplateRows = `repeat(${lignes}, 1fr)`;
 
-///////////////////////////////////////
+// Fonction pour afficher les cartes
+function afficherCartes(cartes) {
+  // Pour chaque carte dans le tableau cartesMelangees
+  cartes.forEach((carte, index) => {
+    // Créer un élément div pour la carte
+    const carteElement = document.createElement("div");
+    carteElement.classList.add("carte");
+    
+    // Créer l'élément img pour la carte
+    const imgElement = document.createElement("img");
+    imgElement.src = carte.src; // Mettre la source de l'image
+    imgElement.alt = "Carte";  // Attribut alt pour l'accessibilité
+    
+    // Ajouter l'image à la div de la carte
+    carteElement.appendChild(imgElement);
+    
+    // Ajouter un écouteur d'événement pour retourner la carte lorsqu'elle est cliquée
+    carteElement.addEventListener("click", () => {
+      carteElement.classList.toggle("active"); // Permet de retourner la carte
+    });
+    
+    // Ajouter la carte au conteneur
+    pisteJeux.appendChild(carteElement);
+  });
+}
+
+// Afficher les cartes mélangées
+afficherCartes(cartesMelangees);
 
 
 
-// // Dupliquer pour créer des paires
-// let paires = [...listeChoisie.slice(0, 6), ...listeChoisie.slice(0, 6)]; // ici, 6 paires, à adapter
-// melangerTableau(paires);
 
-// // Ajouter les cartes au plateau
-// paires.forEach((imgOriginale) => {
-//   const img = document.createElement("img");
-//   img.src = "img/dos.png";
-//   img.classList.add("carte");
-
-//   // Stocker la vraie source dans un attribut data
-//   img.dataset.src = imgOriginale.src;
-
-//   img.addEventListener("click", () => {
-//     img.src = img.dataset.src;
-//     // Logique de comparaison à ajouter ici
-//   });
-
-//   pisteJeux.appendChild(img);
-// });
-
-// // Fonction pour mélanger
-// function melangerTableau(tableau) {
-//   for (let i = tableau.length - 1; i > 0; i--) {
-//     let j = Math.floor(Math.random() * (i + 1));
-//     [tableau[i], tableau[j]] = [tableau[j], tableau[i]];
-//   }
-// }
-
-// //lance une partie et genere le plateau
-// let lancer = document.getElementById("lancer");
-// lancer.addEventListener("click", function () {
-//   genererPlateau();
-// });
