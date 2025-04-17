@@ -21,59 +21,47 @@
         <li><a href="jouer.html">jouer</a></li>
       </ul>
     </nav>
-<div class="cadreProfil">
+    <div class="cadreProfil">
+      <h2>profil</h2>
 
-    <h2>profil</h2>
+      <img
+        src="ressources\question.svg"
+        alt="image de profil"
+        class="image"
+        id="photoprofil"
+      />
 
-<img src="ressources\question.svg" alt="image de profil" class="image" id="photoprofil">
+      <label for="nom">Nom d'utilisateur</label>
+      <p id="nom">pseudo</p>
 
-<label for="nom">Nom d'utilisateur*</label>
-            <input
-              type="text"
-              id="nom"
-              name="nom"
-              autofocus
-              required
-              placeholder="3 caractères minimum"
-              pattern=".{3,}"
-              title="Saisissez votre nom (3 caractères minimum.)"
-            />
-            <!-- <small>3 caractères minimum</small> -->
+      <label for="mail">E-mail</label>
+      <p id="mail">mail</p>
 
-            <label for="mail">Entrez votre E-mail*</label>
-            <input
-              type="text"
-              id="mail"
-              name="mail"
-              required
-              placeholder="E-mail"
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              title="Rentrez un mail valide ex: nom.prenom@fournisseur.fr"
+      <label for="listeMemory">Choix du memory : </label>
+      <select name="liste" id="listeMemory">
+        <option value="scrabble">Alphabet-Scrabble</option>
+        <option value="animaux">Animaux</option>
+        <option value="animauxAnimes">Animaux-Animés</option>
+        <option value="animauxDomestiques">Animaux Domestiques</option>
+        <option value="chiens">Chiens</option>
+        <option value="dinosauresAvecNom">Dinosaures avec nom</option>
+        <option value="legume">Légumes</option>
+      </select>
 
-                    <label for="listeMemory">Choix du memory : </label>
-                    <select name="liste" id="listeMemory">
-                        <option value="scrabble">Alphabet-Scrabble</option>
-                        <option value="animaux">Animaux</option>
-                        <option value="animauxAnimes">Animaux-Animés</option>
-                        <option value="animauxDomestiques">Animaux Domestiques</option>
-                        <option value="chiens">Chiens</option>
-                        <option value="dinosauresAvecNom">Dinosaures avec nom</option>
-                        <option value="legume">Légumes</option>
-                    </select>
+      <img
+        src="ressources\memory-legume\memory_detail.png"
+        alt="présentation du memory sélectionné"
+        class="image"
+      />
 
-                    <img src="ressources\memory-legume\memory_detail.png" alt="présentation du memory sélectionné" class="image"/>
+      <label for="listeTaille">Choix de la taille : </label>
+      <select name="liste" id="listeTaille">
+        <option value="4x3">4 x 3</option>
+      </select>
 
-                    <label for="listeTaille">Choix de la taille : </label>
-                    <select name="liste" id="listeTaille">
-                        <option value="4x3">4 x 3</option>
-                    </select>
-
-                    <div class="clic">
-                        <input type="submit" value="Enregistrer option" />
-                    </div>
-
-</div>
-
-
+      <div class="clic">
+        <input type="submit" value="Enregistrer option" />
+      </div>
+    </div>
   </body>
 </html>

@@ -2,6 +2,7 @@ let mail = document.getElementById("mail");
 let mdp = document.getElementById("motDePasse");
 let submit = document.getElementById("submit")
 
+
 //stockage des données en local:
 submit.addEventListener("click", function (event) {
   event.preventDefault();
@@ -11,7 +12,8 @@ submit.addEventListener("click", function (event) {
   const password = mdp.value;
 
   //extrait les données stockées si il y en a
-  const listeinfos = JSON.parse(localStorage.getItem("listeinfos")) || [];
+  const listeinfos = JSON.parse(localStorage.getItem("listeinfos"));
+  
 
   // Vérifie si un utilisateur avec les mêmes infos existe déjà
   const verifUser = listeinfos.some(function (user) {
@@ -19,8 +21,10 @@ submit.addEventListener("click", function (event) {
   });
 
   if (verifUser) {
+    sessionStorage.setItem("mail",email);
     window.location.href = "profil.html";
   } else {
     alert("Utilisateurs non trouver");
   }
 });
+
