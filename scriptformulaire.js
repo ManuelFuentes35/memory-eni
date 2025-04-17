@@ -188,13 +188,31 @@ function accesbouton() {
 //stockage des données en local:
 submit.addEventListener("click", function (event) {
   event.preventDefault();
+
+  //stock les nouvelles données utilisateurs
+  const pseudo = nom.value;
+  const email = mail.value;
+
+  //extrait les données stockées si il y en a 
   const listeinfos =JSON.parse(localStorage.getItem("listeinfos"))|| [];
+
+  // Vérifie si un utilisateur avec les mêmes infos existe déjà
+  const dejacreer = listeinfos.some(function(user) {
+    return user.pseudo === pseudo && user.mail === email;  
+  });
+
+  if (dejacreer) {
+    alert("Cet utilisateur existe déjà !");
+  }else{
   listeinfos.push({
     pseudo: nom.value,
     mail: mail.value,
     password: mdp.value,
   })
   localStorage.setItem("listeinfos",JSON.stringify(listeinfos));
-  
+  alert("Bienvenue parmi nous!");
+  window.location.href = "connexion.html";
+}
 });
+
 
