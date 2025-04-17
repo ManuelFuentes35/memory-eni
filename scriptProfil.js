@@ -32,7 +32,7 @@ function selectImage() {
   if (choixMemory.value === "scrabble") {
     imageMemory.src = "ressources/alphabet-scrabble/memory_detail_scrabble.png";
   } else if (choixMemory.value === "animaux") {
-    imageMemory.src = "ressources/animaux/memory_detail_animaux.png";
+    imageMemory.src ="ressources/animaux/memory_detail_animaux.png";
   } else if (choixMemory.value === "animauxAnimes") {
     imageMemory.src =
       "ressources/animauxAnimes/memory_detail_animaux_animes.png";
@@ -55,3 +55,13 @@ function selectImage() {
 imageMemory.addEventListener("click", function () {
   window.location.href = "jouer.html";
 });
+
+
+//stockage choix de la taille du memory dans le LocalS
+
+let choixTaille = document.getElementById("listeTaille");
+choixTaille.addEventListener("click", stockageTaille);
+
+function stockageTaille() {
+  localStorage.setItem("choixTaille", JSON.stringify(choixTaille.value));
+}

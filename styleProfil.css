@@ -103,19 +103,5 @@ body {
     width: 10%;
   }
 
-  .clic input {
-    background-color: bisque;
-    color:black;
-    border : none;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .clic{
-    margin-top: 10px;
-    display: flex;
-    align-self: center;
-}
+  
  
