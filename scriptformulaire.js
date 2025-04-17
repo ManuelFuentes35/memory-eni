@@ -188,7 +188,13 @@ function accesbouton() {
 //stockage des données en local:
 submit.addEventListener("click", function (event) {
   event.preventDefault();
-  localStorage.setItem("pseudo", nom.value);
-  localStorage.setItem("mail", mail.value);
-  localStorage.setItem("password", mdp.value);
+  const listeinfos =JSON.parse(localStorage.getItem("listeinfos"))|| [];
+  listeinfos.push({
+    pseudo: nom.value,
+    mail: mail.value,
+    password: mdp.value,
+  })
+  localStorage.setItem("listeinfos",JSON.stringify(listeinfos));
+  
 });
+

@@ -57,7 +57,7 @@ header {
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 5vh 0;
+  padding-top: 5vh;
 }
 
 .affichageForm {
@@ -72,7 +72,6 @@ header {
   font-size: 1vw;
   font-weight: normal;
   margin-top: auto;
-  margin-bottom: 1vw;
 }
 
 h2 {
