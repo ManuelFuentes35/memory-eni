@@ -14,3 +14,7 @@ const user = listeinfos.find(function (user) {
 if (user) {
   nom.innerText = user.pseudo;
 }
+
+//stockage choix du type de memory dans le LocalS
+let choixMemory = document.getElementById("listeMemory").value;
+localStorage.setItem("choixMemory", JSON.stringify(choixMemory));
