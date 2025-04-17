@@ -16,5 +16,10 @@ if (user) {
 }
 
 //stockage choix du type de memory dans le LocalS
-let choixMemory = document.getElementById("listeMemory").value;
-localStorage.setItem("choixMemory", JSON.stringify(choixMemory));
+
+let choixMemory = document.getElementById("listeMemory");
+choixMemory.addEventListener("click",stockage)
+
+function stockage() {
+localStorage.setItem("choixMemory", JSON.stringify(choixMemory.value));
+};
