@@ -2,72 +2,56 @@
 const listeScrabble = [];
 
 for (let i = 1; i <= 26; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/alphabet-scrabble/${i}.png`;
-  listeScrabble.push(img);
+  listeScrabble.push(`ressources/alphabet-scrabble/${i}.png`);
 }
 
 // liste animaux
 const listeAnimaux = [];
 
 for (let i = 1; i <= 27; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/animaux/${i}.webp`;
-  listeAnimaux.push(img);
+    listeAnimaux.push(`ressources/animaux/${i}.webp`);
 }
 
 // liste animaux animes
 const listeAnimauxAnimes = [];
 
 for (let i = 1; i <= 8; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/animauxAnimes/${i}.webp`;
-  listeAnimauxAnimes.push(img);
+   listeAnimauxAnimes.push(`ressources/animauxAnimes/${i}.webp`);
 }
 
 //liste animaux domestiques
 const listeAnimauxDomestiques = [];
 
 for (let i = 1; i <= 10; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/animauxdomestiques/${i}.jpg`;
-  listeAnimauxDomestiques.push(img);
+  listeAnimauxDomestiques.push(`ressources/animauxdomestiques/${i}.jpg`);
 }
 
 // liste chiens
 const listeChiens = [];
 
 for (let i = 1; i <= 23; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/chiens/${i}.webp`;
-  listeChiens.push(img);
+  listeChiens.push(`ressources/chiens/${i}.webp`);
 }
 
 // liste dinosaures
 const listeDinosaures = [];
 
 for (let i = 1; i <= 10; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/dinosaures/${i}.jpg`;
-  listeDinosaures.push(img);
+  listeDinosaures.push(`ressources/dinosaures/${i}.jpg`);
 }
 
 // liste dinosaures avec nom
 const listeDinosauresAvecNom = [];
 
 for (let i = 1; i <= 10; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/dinosauresAvecNom/${i}.jpg`;
-  listeDinosauresAvecNom.push(img);
+  listeDinosauresAvecNom.push(`ressources/dinosauresAvecNom/${i}.jpg`);
 }
 
 // liste legume
 const listeLegume = [];
 
 for (let i = 1; i <= 6; i++) {
-  const img = document.createElement("img");
-  img.src = `ressources/memory-legume/${i}.svg`;
-  listeLegume.push(img);
+  listeLegume.push(`ressources/memory-legume/${i}.svg`);
 }
 
 //création tableau des différentes listes et association des listes au nom des choix
@@ -96,11 +80,10 @@ console.log(listeChoisie);
 console.log(choixTaille);
 console.log(quantite);
 
-//selection aléatoire des cartes du jeux
-const copieListe = [...listeChoisie];
-const selection = [];
-
 function choixImageAleatoire() {
+  //selection aléatoire des cartes du jeux
+  const copieListe = [...listeChoisie];
+let selection = [];
   for (let i = 0; i < quantite; i++) {
     if (copieListe.length === 0) {
       break;
@@ -112,19 +95,18 @@ function choixImageAleatoire() {
   return selection;
 }
 
-choixImageAleatoire();
-
-console.log("Sélection aléatoire :", selection);
-
 //création des paires de cartes
+let selection = [];
 let doublons = [];
+
 function doubleSelection() {
   doublons.push(...selection);
   doublons.push(...selection);
   return doublons;
 }
+console.log("Sélection aléatoire :", selection);
 
-doubleSelection();
+//doubleSelection();
 
 console.log("sélection final ;", doublons);
 
@@ -137,9 +119,9 @@ function melangeur(doublons) {
   return doublons;
 }
 
-const cartesMelangees = melangeur(doublons);
+//const cartesMelangees = melangeur(doublons);
 
-console.log("cartes mélangées :", cartesMelangees);
+//console.log("cartes mélangées :", cartesMelangees);
 
 ///////////////////////////////////////////////////////////////////
 
@@ -182,7 +164,7 @@ function afficherCartes(cartes) {
     verso.classList.add("verso");
 
     const imgElement = document.createElement("img");
-    imgElement.src = carte.src;
+    imgElement.src = carte;// ici carte = une string avec chemin de l'image
     imgElement.alt = "Carte";
 
     verso.appendChild(imgElement);
@@ -230,6 +212,45 @@ function afficherCartes(cartes) {
 }
 
 // Afficher les cartes mélangées
-afficherCartes(cartesMelangees);
+//afficherCartes(cartesMelangees);
 
 
+
+
+
+let boutonLancer = document.getElementById("lancer");
+
+//les deux evenement pour lancer une partie
+boutonLancer.addEventListener("click",demarrerJeu);
+let toucheLancer =  document.addEventListener("keydown", function(event) {
+  if (event.key === " ") { 
+    demarrerJeu();
+  }
+});
+
+//function démarrage du jeu
+function demarrerJeu() {
+  // 1. Vider le plateau de jeu
+  pisteJeux.innerHTML = "";
+
+  // 2. Réinitialiser les compteurs et variables globales
+  count = 0;
+  compteur.innerText = "nombre de coup: " + count;
+  premiereCarte = null;
+  deuxiemeCarte = null;
+  verouillage = false;
+
+  // 3. Réinitialiser les sélections de cartes
+  selection.length = 0;
+  doublons.length = 0;
+
+  selection.push(...choixImageAleatoire());
+  doubleSelection();
+  const cartesMelangees = melangeur(doublons);
+
+  console.log("cartes mélangées :", cartesMelangees);
+
+  // 4. Réafficher les cartes
+  afficherCartes(cartesMelangees);
+  console.log("Nouvelle partie démarrée !");
+}
