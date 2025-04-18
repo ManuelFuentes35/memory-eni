@@ -203,6 +203,16 @@ function afficherCartes(cartes) {
         }
         // mettre à jour le compteur
         compteur.innerText = "nombre de coup: " + count;
+
+// Vérifie si toutes les cartes sont retournées
+const toutesRetournees = document.querySelectorAll(".carte:not(.active)").length === 0;
+if (toutesRetournees) {
+  setTimeout(function () {
+    alert("🎉 Victoire !");
+  },1000);
+    sauvegarderScore(count);
+}
+
       }
     });
 
@@ -211,9 +221,23 @@ function afficherCartes(cartes) {
   });
 }
 
-// Afficher les cartes mélangées
-//afficherCartes(cartesMelangees);
+//sauver le compteur et limiter le tableau à 5 cases
+function sauvegarderScore(nouveauScore) {
+  let scores = JSON.parse(localStorage.getItem("scoresMemory")) || [];
 
+  // Ajoute le score au début du tableau
+  scores.unshift(nouveauScore);
+
+  // Limite à 5 scores
+  if (scores.length > 5) {
+    scores = scores.slice(0, 5);
+  }
+
+  // Stockage dans le localStorage
+  localStorage.setItem("scoresMemory", JSON.stringify(scores));
+
+  console.log("Scores sauvegardés :", scores);
+}
 
 
 
@@ -254,3 +278,7 @@ function demarrerJeu() {
   afficherCartes(cartesMelangees);
   console.log("Nouvelle partie démarrée !");
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  demarrerJeu(); 
+});

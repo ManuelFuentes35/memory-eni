@@ -24,7 +24,14 @@ submit.addEventListener("click", function (event) {
     sessionStorage.setItem("mail",email);
     window.location.href = "profil.html";
   } else {
-    alert("Utilisateurs non trouver");
+    // alert("Utilisateurs non trouver");
+    const form = document.getElementById("form");
+      form.classList.add("shake");
+
+      // Retire la classe après l'animation pour pouvoir la relancer plus tard
+      setTimeout(() => {
+          form.classList.remove("shake");
+      }, 400);
   }
 });
 
