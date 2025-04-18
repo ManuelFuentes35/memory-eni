@@ -87,7 +87,7 @@ const choixMemory = JSON.parse(localStorage.getItem("choixMemory"));
 const choixTaille = JSON.parse(localStorage.getItem("choixTaille"));
 let listeChoisie = associeListeEtMemory[choixMemory];
 
-const [colonnes,lignes]=choixTaille.split("*").map(Number);
+const [colonnes, lignes] = choixTaille.split("*").map(Number);
 
 let quantite = (colonnes * lignes) / 2;
 
@@ -141,7 +141,6 @@ const cartesMelangees = melangeur(doublons);
 
 console.log("cartes mélangées :", cartesMelangees);
 
-
 ///////////////////////////////////////////////////////////////////
 
 // Sélectionner l'élément qui va contenir les cartes
@@ -151,6 +150,20 @@ const pisteJeux = document.getElementById("pisteJeux");
 pisteJeux.style.gridTemplateColumns = `repeat(${colonnes}, 1fr)`;
 pisteJeux.style.gridTemplateRows = `repeat(${lignes}, 1fr)`;
 
+let compteur = document.getElementById("compteur");
+// Variables globales pour gérer le jeu
+let premiereCarte = null;
+let deuxiemeCarte = null;
+let verouillage = false;
+let count = 0;
+
+// Fonction pour réinitialiser les cartes sélectionnées
+function resetCartes() {
+  premiereCarte = null;
+  deuxiemeCarte = null;
+  verouillage = false;
+}
+
 // Fonction pour afficher les cartes
 function afficherCartes(cartes) {
   // Pour chaque carte dans le tableau cartesMelangees
@@ -158,20 +171,59 @@ function afficherCartes(cartes) {
     // Créer un élément div pour la carte
     const carteElement = document.createElement("div");
     carteElement.classList.add("carte");
-    
-    // Créer l'élément img pour la carte
+
+    // Création du recto (face visible au départ)
+    const recto = document.createElement("div");
+    recto.classList.add("recto");
+    recto.innerHTML = '<img src="ressources/dos.png" alt="dos des cartes" id="doscartes">'; // ou mets une icône, un emoji, etc.
+
+    // Création du verso (l'image à révéler)
+    const verso = document.createElement("div");
+    verso.classList.add("verso");
+
     const imgElement = document.createElement("img");
-    imgElement.src = carte.src; // Mettre la source de l'image
-    imgElement.alt = "Carte";  // Attribut alt pour l'accessibilité
-    
-    // Ajouter l'image à la div de la carte
-    carteElement.appendChild(imgElement);
-    
-    // Ajouter un écouteur d'événement pour retourner la carte lorsqu'elle est cliquée
-    carteElement.addEventListener("click", () => {
-      carteElement.classList.toggle("active"); // Permet de retourner la carte
+    imgElement.src = carte.src;
+    imgElement.alt = "Carte";
+
+    verso.appendChild(imgElement);
+
+    // Ajout des faces à la carte
+    carteElement.appendChild(recto);
+    carteElement.appendChild(verso);
+
+    // Ajouter un écouteur d'événement pour gérer le clic
+    carteElement.addEventListener("click", function () {
+      if (verouillage || carteElement.classList.contains("active")) {
+        return;
+      }
+
+      carteElement.classList.toggle("active");
+
+      if (!premiereCarte) {
+        premiereCarte = carteElement;
+      } else {
+        deuxiemeCarte = carteElement;
+        verouillage = true;
+
+        var img1 = premiereCarte.querySelector(".verso img").src;
+        var img2 = deuxiemeCarte.querySelector(".verso img").src;
+
+        if (img1 !== img2) {
+          setTimeout(function () {
+            premiereCarte.classList.remove("active");
+            deuxiemeCarte.classList.remove("active");
+            resetCartes();
+          }, 3000);
+          count++;
+        } else {
+          resetCartes();
+          count++;
+        }
+        // mettre à jour le compteur
+        compteur.innerText = "nombre de coup: " + count;
+      }
     });
-    
+
     // Ajouter la carte au conteneur
     pisteJeux.appendChild(carteElement);
   });
@@ -179,7 +231,5 @@ function afficherCartes(cartes) {
 
 // Afficher les cartes mélangées
 afficherCartes(cartesMelangees);
-
-
 
 
