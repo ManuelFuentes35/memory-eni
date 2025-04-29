@@ -57,6 +57,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     padding: 5vh 0;
   }
 
@@ -66,8 +67,8 @@ body {
     height: auto;
     background-color: rgb(37, 35, 35);
     padding: 5%;
-
-    width: 35%;
+    width: 100%;
+    min-width: 250px;
     border: none;
     border-radius: 5%;
     border: 0.15vw solid white;
@@ -78,7 +79,6 @@ body {
    
   }
   
-
 
     h2 {
       font-weight: bold;
@@ -95,9 +95,14 @@ body {
 
     input {
       width: 100%;
+      box-sizing: border-box;
       background: transparent;
       border: none;
       border-bottom: 2% solid white;
+      /* padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 0px;
+      padding-right: 0px; */
       padding: 10px;
       font-size: 1em;
       color: rgb(190, 182, 182);}
@@ -112,8 +117,13 @@ body {
         color:black;
         border : none;
         border-radius: 5px;
-        padding: 10px;
+        /* padding: 10px; */
+        padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 0px;
+      padding-right: 0px;
         width: 40%;
+        min-width: 85px;
         cursor: pointer;
       }
 
